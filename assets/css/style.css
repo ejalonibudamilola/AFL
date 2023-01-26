@@ -427,7 +427,7 @@ h6 {
 
 .hero blockquote {
   color: #fff;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-size: 15px;
   font-family: var(--font-default);
   border-left: 2px solid var(--color-primary);
@@ -756,6 +756,20 @@ section {
   margin-left: 8px;
 }
 
+.moremsg{
+  margin-top:2%;
+  padding: 2%;
+  background-color: #47b2e4;
+  border-radius: 2.5em;
+  color: white !important;
+  border: 0;
+}
+
+
+.moremsg i{
+  font-size: 20px;
+}
+
 
 /*--------------------------------------------------------------
 # Contact
@@ -925,7 +939,7 @@ section {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button {
   background: #47b2e4;
   border: 0;
   padding: 12px 34px;
@@ -934,8 +948,12 @@ section {
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button:hover {
   background: #209dd8;
+}
+
+.error{
+	color:red
 }
 
 @-webkit-keyframes animate-loading {
