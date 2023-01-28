@@ -144,7 +144,7 @@
               <div class="member-info">
                 <h4>Encountering God As The El-Shaddai</h4>
                 <span>Apostle Femi Lazarus</span>
-                <p><audio src="https://t.me/Femilazarusmessages/861" controls></audio></p>
+                <p><audio src="https://res.cloudinary.com/dlclg1j73/video/upload/v1674904990/Encountering-God-As-The-El-Shaddai_h5fiv2.mp3" controls></audio></p>
                 
               </div>
             </div>
@@ -162,7 +162,7 @@
               <div class="member-info">
                 <h4>Three Accurate Response To Give To The Love Of God</h4>
                 <span>Apostle Femi Lazarus</span>
-                <p><audio src="https://t.me/Femilazarusmessages/862" controls></audio></p>
+                <p><audio src="https://res.cloudinary.com/dlclg1j73/video/upload/v1674904968/Three-Accurate-Response-To-Give-To-The-Love-Of-God_ekijua.mp3" controls></audio></p>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@
               <div class="member-info">
                 <h4>They That Know Their God</h4>
                 <span>Apostle Femi Lazarus</span>
-                <p><audio src="https://t.me/Femilazarusmessages/857" controls></audio></p>
+                <p><audio src="https://res.cloudinary.com/dlclg1j73/video/upload/v1674904957/They-That-Do-Know-Their-God-Introduction_ods829.mp3" controls></audio></p>
               </div>
             </div>
           </div>
