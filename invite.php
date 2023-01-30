@@ -10,8 +10,8 @@
 	$email_body = "Ministry Name: $mname.\n".
 					"Location: $location.\n".
 					"Meeting Date: $mdate.\n".
-					"Phone Number: $number.\n";
-					"Email: $visitor_email.\n".
+					"Phone Number: $number.\n".
+					"Email: $visitor_email.\n";
 
 	$to = "invitations@apostlefemilazarusministries.com";
 	$headers = "Reply-To: $visitor_email \r\n";

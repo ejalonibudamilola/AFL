@@ -212,7 +212,7 @@
 
         <div class="row">          
           <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Ministry Name</label>
@@ -263,17 +263,19 @@
         <div class="row justify-content-center">
           <div class="col-lg-12" data-aos="zoom-in" data-aos-delay="100">
             <h4>Book a counselling session</h4>
-            <form action="" method="post">
+            <form class="counselForm" onsubmit="ValidateCounselForm()">
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group col-md-12 session">
                     <input type="text" name="fname"  placeholder="Name" id="fname">
                   </div>
+                  <span id="cfname" class="counsel-error" font-weight-bold></span>
                 </div>
                 <div class="col-md-5">
                   <div class="form-group col-md-12 session">
                     <input type="text" name="phone" placeholder="Phone Number" id="phone">
                   </div>
+                  <span id="cphone" class="counsel-error" font-weight-bold></span>   
                 </div>
                 <div class="col-md-2">
                   <div class="form-group col-md-12">
@@ -363,6 +365,36 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
+  <!-- ======= Modal ======= -->
+  <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Your Message has been successfully sent
+        </div>
+        <div class="modal-footer">
+          <button id="successBtn" style="background-color: #47b2e4; border-color: #47b2e4" type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="failureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Opps! your message wasn't successfuly sent, please try again.
+        </div>
+        <div class="modal-footer">
+          <button type="button" style="text-align: center;" class="btn btn-danger" data-bs-dismiss="modal">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End Modal -->
+
+
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
@@ -371,8 +403,7 @@
   <script src="assets/js/main.js"></script>
   
   <script type="text/javascript">
-    function ValidateForm(){
-      console.log("Validating");     
+    function validateForm(){
       var mname = $("#mname").val();   
       var location = $("#location").val();  
       var mdate = $("#mdate").val(); 
@@ -424,7 +455,7 @@
 
   $("#invite").click(function(e){
           e.preventDefault();
-              var valid = ValidateForm();
+              var valid = validateForm();
               if (valid===true){
                 var form = $(this).closest('form');
                 var data = form.serialize();
@@ -434,13 +465,72 @@
                   url:url,
                   data: data,
                   success: function(response){
-                    console.log("Success");                      
+                    $('#successModal').modal('show'); 
                   },
                   error : function(request,error){
-                    console.log("failure");                      
+                    $('#failureModal').modal('show'); 
                   }   
                 });
               }               
+  });
+
+
+
+
+  function validateCounselForm(){
+    var fname = $("#fname").val();   
+    var phone = $("#phone").val(); 
+    var digit = /^[0-9]+$/;
+    var validCounsel = true;
+    removeCounselMessage();
+
+    if(fname == ""){
+      event.preventDefault();
+      document.getElementById("cfname").innerHTML="This input cannot be left empty";
+      validCounsel=false;
+    }
+
+    if(!digit.test(phone)){
+      event.preventDefault();
+      document.getElementById("cphone").innerHTML="Input a valid Phone Number";
+      validCounsel=false;
+    }
+
+    return validCounsel;   
+
+  }
+
+
+  function removeCounselMessage(){
+      var eremove = document.querySelectorAll(".counsel-error");
+      [].forEach.call(eremove, function(el){
+          el.innerHTML="";
+      });
+  }
+
+  $("#bookc").click(function(e){
+    e.preventDefault();
+    var validCounsel = validateCounselForm();
+    if (validCounsel===true){
+      var form = $(this).closest('form');
+      var data = form.serialize();
+      var url = "counsel.php";
+      $.ajax({
+        type:'post',
+        url:url,
+        data: data,
+        success: function(response){
+          $('#successModal').modal('show'); 
+        },
+        error : function(request,error){
+          $('#failureModal').modal('show'); 
+        }   
+      });
+    }               
+  });
+
+  $('#successBtn').click(function(e){
+    location.reload();
   });
 
 
